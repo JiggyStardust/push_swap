@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 11:14:36 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/03 09:51:55 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/04 10:15:11 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,11 @@
 # define PUSH_SWAP_H
 # include "../Libft/libft.h"
 
-typedef struct s_node
-{
-	int				nbr;
-	struct s_node	*next;
-} t_node;
 
 typedef struct s_stack
 {
-	t_node			*top;
-	int				size;
+	int				nbr;
+	struct s_stack	*next;
 } t_stack;
 
 #endif

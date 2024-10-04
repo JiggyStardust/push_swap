@@ -6,27 +6,60 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 11:21:28 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/03 15:15:25 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/04 16:03:36 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
+
+void print_stack(t_stack *stack)
+{
+    if (!stack)
+    {
+        ft_printf("Stack is empty\n");
+        return;
+    }
+
+    t_stack *current = stack;
+    int count = 0;  // Counter to limit printing to 4 elements
+
+    while (current && count < 4)
+    {
+        ft_printf("%d -> ", current->nbr);
+        current = current->next;
+        count++;
+
+        // Check if we have reached the head again to stop
+        if (current == stack)
+            break;
+    }
+
+    if (count == 4)
+        ft_printf("...\n");  // Indicate more elements if the list exceeds 4
+    else
+        ft_printf("(back to %d)\n", stack->nbr);
+}
+
 
 void	rev_rotate(t_stack **stack)
 {
-	if (stack->top && stack->size > 1)
-	{
-		t_node	*last;
-		t_node	*before_last;
+	if (!*stack || (*stack)->next == *stack)
+		return ;
+	t_stack	*last = *stack;
+	t_stack	*before_last = NULL;
 
-		last = stack->top;
-		while (last->next != stack->top)
-		{
-			before_last = last;
-			last = last->next;
-		}
-		stack->top = last;
-		before_last->next = stack->top;
+	while (last->next != *stack)
+	{
+		ft_printf("Current last: %d, next: %d\n", last->nbr, last->next->nbr);
+		before_last = last;
+		last = last->next;
+	}
+	if (before_last)
+	{
+		last->next = *stack;
+		before_last->next = last;
+		*stack = last;
 	}
 }
 
@@ -50,13 +83,9 @@ void	rrr(t_stack **stack_a, t_stack **stack_b)
 }
 void	rotate(t_stack **stack)
 {
-	if (stack->top && stack->size > 1)
+	if (*stack && (*stack)->next != *stack)
 	{
-		t_node	*second;
-
-		second = stack->top;
-		second = second->next;
-		stack->top = second;
+		*stack = (*stack)->next;
 	}
 }
 
@@ -78,6 +107,38 @@ void	rr(t_stack **stack_a, t_stack **stack_b)
 	ft_printf("rr\n");
 }
 
+void swap(t_stack **stack)
+{
+    if (*stack && (*stack)->next != *stack)
+    {
+        ft_printf("SWAP HAPPENS\n");
+        t_stack *first;
+        t_stack *second;
+        t_stack *third;
+
+        first = *stack;
+        second = first->next;
+        third = second->next;
+
+        // Swap the first two nodes
+        second->next = first;
+        first->next = third;
+
+        // If the list is circular, make sure the new last node points to the new head
+        if (third != NULL)
+        {
+            t_stack *last = third;
+            while (last->next != *stack) // Traverse until the end of the circular list
+            {
+                last = last->next;
+            }
+            last->next = second;  // Make the new last point to the new head
+        }
+        *stack = second; // Update the head of the stack
+    }
+}
+
+
 void	sb(t_stack **stack_b)
 {
 	swap(stack_b);
@@ -97,69 +158,80 @@ void	ss(t_stack **stack_a, t_stack **stack_b)
 	ft_printf("ss\n");
 }
 
-void	swap(t_node **stack)
-{
-	if (stack->top && stack->size > 1)
-	t_node	*first;
-	t_node	*second;
-
-	first = stack->top;
-	second = stack->top->next;
-	first->next = second->next;
-	second->next = first;
-	stack->top = second;	
-}
-
-void	sort_three(t_stack *stack_a)
+void	sort_three(t_stack **stack_a)
 {
 	int	a;
 	int	b;
 	int	c;
 
-	a = stack_a->top->nbr;
-	b = stack_a->top->next->nbr;
-	c = stack_a->top->next->next->nbr;
+	a = (*stack_a)->nbr;
+	b = (*stack_a)->next->nbr;
+	c = (*stack_a)->next->next->nbr;
 	if (a > b && b > c) // 3 2 1
-		sa(&stack_a); // 2 3 1
-		rra(&stack_a); //1 2 3
+	{	
+		print_stack(*stack_a);
+		ra(stack_a); // 2 1 3
+		print_stack(*stack_a);
+		sa(stack_a); //1 2 3
+		print_stack(*stack_a);
+	}
 	else if (a > c && c > b) // 3 1 2
-		ra(&stack_a); // 1 2 3
-	else if (b > a && b > c)// 1 3 2
 	{
-		rra(&stack_a); // 2 1 3
-		sa(&stack_a); // 1 2 3
+		print_stack(*stack_a);
+		ra(stack_a); // 1 2 3
+		print_stack(*stack_a);
+	}
+	else if (a < c && b > c)// 1 3 2 
+	{
+		print_stack(*stack_a);
+		rra(stack_a); // 2 1 3
+		print_stack(*stack_a);
+		sa(stack_a); // 1 2 3
+		print_stack(*stack_a);
 	}
 	else if (a > b && c > a) // 2 1 3
-		sa(&stack_a);  // 1 2 3
+	{
+		print_stack(*stack_a);	
+		sa(stack_a);  // 1 2 3
+		print_stack(*stack_a);
+	}
 	else if (a > c && b > a) // 2 3 1
-		rra(&stack_a); // 1 2 3
+	{
+		print_stack(*stack_a);
+		rra(stack_a); // 1 2 3
+		print_stack(*stack_a);
+	}
 }
-
-void	add_to_stack(t_node *stack, int nbr)
+void	add_to_stack(t_stack **stack, int nbr)
 {
-	t_node	*new_node;
-	t_node	*temp;
+	t_stack	*new_node;
+	t_stack	*temp;
 	
-	new_node = malloc(sizeof(t_node));
+	new_node = malloc(sizeof(t_stack));
 	if (!new_node)
 		return ;
 	new_node->nbr = nbr;
-	if (stack->top == NULL)
-		stack->top = new_node;
+	if (*stack == NULL)
+	{
+		*stack = new_node;
+		new_node->next = *stack;
+	}
 	else
 	{
-		temp = stack->top;
-		while (temp->next != stack->top)
+		temp = *stack;
+		while (temp->next != *stack)
 			temp = temp->next;
 		temp->next = new_node;
-		new_node->next = stack->top;
+		new_node->next = *stack;
 	}
-	stack->size++;
 }
 
 int	main(int ac, char **av)
 {
-	t_stack	stack_a = {NULL, 0};
+	t_stack	*stack_a;
+
+	stack_a	= NULL;
+
 	int	i;
 	int	num;
 
@@ -168,9 +240,10 @@ int	main(int ac, char **av)
 	{
 		num = ft_atoi(av[i]);
 		add_to_stack(&stack_a, num);
+		ft_printf("Added %d to stack.\n", num);
 		i++;
 	}
-	if (stack_a.size == 3)
+	if (ac == 4)
 		sort_three(&stack_a);
 	return (0);
 }
