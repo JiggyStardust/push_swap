@@ -6,7 +6,7 @@
 #    By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/04 10:46:29 by sniemela          #+#    #+#              #
-#    Updated: 2024/10/04 10:47:54 by sniemela         ###   ########.fr        #
+#    Updated: 2024/10/06 12:50:18 by sniemela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,11 @@ CFLAGS = -Wall -Werror -Wextra
 CC = gcc
 
 SOURCES = push_swap.c \
+			rotate.c \
+			rev_rotate.c \
+			swap.c \
+			sort_small.c \
+			sort_big.c
 		
 OBJS = $(SOURCES:.c=.o)
 
