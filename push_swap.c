@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 11:21:28 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/07 10:07:44 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:17:54 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,82 +63,32 @@ void	add_to_stack(t_stack **stack, int nbr)
 		new_node->next = *stack;
 	}
 }
-void	free_node(t_stack **stack)
-{
-	t_stack	*old_head;
-	t_stack *last;
 
-	if (*stack)
+int		stack_size(t_stack *lst)
+{
+	int		nodes;
+	t_stack	*temp;
+
+	nodes = 1;
+	temp = lst;
+	while (temp && temp->next != lst)
 	{
-		if ((*stack)->next == *stack)
-		{
-			free(*stack);
-			*stack = NULL;
-		}
-		else
-		{
-		old_head = *stack;
-		last = *stack;
-		while (last->next != *stack)
-			last = last->next;
-		*stack = (*stack)->next;
-		last->next = *stack;
-		free(old_head);
-		}
+		nodes++;
+		temp = temp->next;
 	}
-}
-
-void	push(t_stack **dest_stack, t_stack *src_node)
-{
-	t_stack	*new_node;
-	t_stack	*last;
-
-	if (!src_node)
-		return ; // nothing to push, add error handling later
-	new_node = malloc(sizeof(t_stack));
-	if (!new_node)
-		return ; // add error handling later
-	new_node->nbr = src_node->nbr;
-	if (!*dest_stack) // stack empty
-	{
-		new_node->next = new_node;
-		*dest_stack = new_node;
-	}
-	else
-	{
-		new_node->next = *dest_stack;
-		last = *dest_stack;
-		while (last->next != *dest_stack)
-			last = last->next;
-		last->next = new_node;
-		*dest_stack = new_node;
-	}
-}
-
-void	pb(t_stack **stack_a, t_stack **stack_b)
-{
-	if (*stack_a == NULL)
-		return ; // add error handling later
-	push(stack_b, *stack_a);
-	free_node(stack_a);
-}
-
-void	pa(t_stack **stack_a, t_stack **stack_b)
-{
-	if (*stack_b == NULL)
-		return ; // add error handling later
-	push(stack_a, *stack_b);
-	free_node(stack_b);
+	return (nodes);
 }
 
 int	main(int ac, char **av)
 {
 	t_stack	*stack_a;
+	t_stack	*stack_b;
 
 	int	i;
 	int	num;
 
 	stack_a	= NULL;
+	stack_b = NULL;
 	i = 1;
 	while (i < ac)
 	{
@@ -147,9 +97,11 @@ int	main(int ac, char **av)
 		ft_printf("Added %d to stack.\n", num);
 		i++;
 	}
-	if (ac <= 10 && !already_sorted(&stack))
-		sort_small(&stack_a);
-	else
-		sort_big(&stack_a);
+	if (ac <= 10 && !already_sorted(stack_a))
+		sort_small(&stack_a, &stack_b);
+//	else
+//		sort_big(&stack_a);
+	print_stack(stack_a);
+	print_stack(stack_b);
 	return (0);
 }

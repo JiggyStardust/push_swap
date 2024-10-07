@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 12:27:38 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/06 12:57:20 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:15:54 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,28 +61,92 @@ int		already_sorted(t_stack *stack)
 {
 	t_stack	*node;
 
-	node = *stack;
-	while (node->next != *stack)
+	node = stack;
+	while (node->next != stack)
 	{
-		if (node->next->nbr > node->next->next->nbr)
+		if (node->nbr > node->next->nbr)
 			return (0);
 		node = node->next;
 	}
 	return (1);
 }
 
-void	sort_small(t_stack **stack)
+int		find_minimum(t_stack **stack)
+{
+	t_stack	*temp;
+	int		min;
+	int		node;
+	
+	temp = *stack;
+	min = (*stack)->nbr;
+	node = 0;
+	while (temp->next != *stack)
+	{
+		if (min > temp->nbr)
+			min = temp->nbr;
+		temp = temp->next;
+	}
+	temp = *stack;
+	while (min != temp->nbr)
+	{
+		temp = temp->next;
+		node++;
+	}
+	return (node);
+}
+
+void	min_up(t_stack **stack, int size)
+{
+	int		min_node;
+	float	middle;
+	
+	min_node = find_minimum(stack);
+	middle = (float)min_node/(float)size;
+	if (middle <= 1/2)
+	{
+		while (min_node != 0)
+		{
+			ra(stack);
+			min_node--;
+		}
+	}
+	else if (middle > 1/2)
+	{
+		while (min_node != size)
+		{
+			rra(stack);
+			min_node++;
+		}
+	}
+}
+
+void	sort_small(t_stack **stack_a, t_stack **stack_b)
 {
 	int	size;
 
-	size = ft_lstsize(stack);
+	ft_printf("sort small\n");
+	size = stack_size(*stack_a);
+	ft_printf("stack size is: %d\n", size);
 	if (size < 3)
-		sa(stack);
-	else
+		sa(stack_a);
+	else if (size > 3)
 	{
-		while (size > 3 && !already_sorted(*stack));
-		// minimum_up
-		pb(stack);
-		size--;
+		while (size > 3 && !already_sorted(*stack_a))
+		{
+			min_up(stack_a, size);
+			pb(stack_a, stack_b);
+			ft_printf("stack_b: ");
+			print_stack(*stack_b);
+			ft_printf("stack_a: ");
+			print_stack(*stack_a);
+			size--;
+		}
+	}
+	sort_three(stack_a);
+	while (*stack_b)
+	{
+		pa(stack_a, stack_b);
+		ft_printf("stack_a: ");
+		print_stack(*stack_a);
 	}
 }

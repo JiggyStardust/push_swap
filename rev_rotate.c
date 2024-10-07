@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 12:25:55 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/06 12:26:07 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:18:15 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	rev_rotate(t_stack **stack)
 
 	while (last->next != *stack)
 	{
-		ft_printf("Current last: %d, next: %d\n", last->nbr, last->next->nbr);
+	//	ft_printf("Current last: %d, next: %d\n", last->nbr, last->next->nbr);
 		before_last = last;
 		last = last->next;
 	}
