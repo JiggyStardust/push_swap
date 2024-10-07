@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 11:21:28 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/06 12:53:13 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/07 10:07:44 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,82 @@ void	add_to_stack(t_stack **stack, int nbr)
 		new_node->next = *stack;
 	}
 }
+void	free_node(t_stack **stack)
+{
+	t_stack	*old_head;
+	t_stack *last;
+
+	if (*stack)
+	{
+		if ((*stack)->next == *stack)
+		{
+			free(*stack);
+			*stack = NULL;
+		}
+		else
+		{
+		old_head = *stack;
+		last = *stack;
+		while (last->next != *stack)
+			last = last->next;
+		*stack = (*stack)->next;
+		last->next = *stack;
+		free(old_head);
+		}
+	}
+}
+
+void	push(t_stack **dest_stack, t_stack *src_node)
+{
+	t_stack	*new_node;
+	t_stack	*last;
+
+	if (!src_node)
+		return ; // nothing to push, add error handling later
+	new_node = malloc(sizeof(t_stack));
+	if (!new_node)
+		return ; // add error handling later
+	new_node->nbr = src_node->nbr;
+	if (!*dest_stack) // stack empty
+	{
+		new_node->next = new_node;
+		*dest_stack = new_node;
+	}
+	else
+	{
+		new_node->next = *dest_stack;
+		last = *dest_stack;
+		while (last->next != *dest_stack)
+			last = last->next;
+		last->next = new_node;
+		*dest_stack = new_node;
+	}
+}
+
+void	pb(t_stack **stack_a, t_stack **stack_b)
+{
+	if (*stack_a == NULL)
+		return ; // add error handling later
+	push(stack_b, *stack_a);
+	free_node(stack_a);
+}
+
+void	pa(t_stack **stack_a, t_stack **stack_b)
+{
+	if (*stack_b == NULL)
+		return ; // add error handling later
+	push(stack_a, *stack_b);
+	free_node(stack_b);
+}
 
 int	main(int ac, char **av)
 {
 	t_stack	*stack_a;
 
-	stack_a	= NULL;
-
 	int	i;
 	int	num;
 
+	stack_a	= NULL;
 	i = 1;
 	while (i < ac)
 	{
@@ -83,5 +149,7 @@ int	main(int ac, char **av)
 	}
 	if (ac <= 10 && !already_sorted(&stack))
 		sort_small(&stack_a);
+	else
+		sort_big(&stack_a);
 	return (0);
 }
