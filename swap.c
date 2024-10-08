@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 12:23:51 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/06 12:59:11 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/08 11:29:58 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	swap(t_stack **stack)
 {
     if (*stack && (*stack)->next != *stack)
     {
-        ft_printf("SWAP HAPPENS\n");
+ //       ft_printf("SWAP HAPPENS\n");
         t_stack *first;
         t_stack *second;
         t_stack *third;

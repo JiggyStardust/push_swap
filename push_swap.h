@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 11:14:36 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/07 13:43:00 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/08 15:23:05 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	min_up(t_stack **stack, int size);
 // Sorting algorhithms
 void	sort_three(t_stack **stack_a);
 void	sort_small(t_stack **stack_a, t_stack **stack_b);
-void	sort_big(t_stack **stack);
+void	sort_big(t_stack **stack_a, t_stack **stack_b);
 
 // Rotating functions
 
