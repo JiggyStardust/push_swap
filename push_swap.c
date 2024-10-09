@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 11:21:28 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/08 15:29:37 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/09 11:07:10 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 //     t_stack *current = stack;
 //     int count = 0;  // Counter to limit printing to 4 elements
 
-//     while (current && count < 5)
+//     while (current && count < 13)
 //     {
 //         ft_printf("%d -> ", current->nbr);
 //         current = current->next;
@@ -69,6 +69,8 @@ int		stack_size(t_stack *lst)
 	int		nodes;
 	t_stack	*temp;
 
+	if (lst == NULL)
+		return (0);
 	nodes = 1;
 	temp = lst;
 	while (temp && temp->next != lst)
@@ -97,7 +99,7 @@ int	main(int ac, char **av)
 //		ft_printf("Added %d to stack.\n", num);
 		i++;
 	}
-	if (ac <= 10 && !already_sorted(stack_a))
+	if (ac <= 5 && !already_sorted(stack_a))
 		sort_small(&stack_a, &stack_b);
 	else
 		sort_big(&stack_a, &stack_b);

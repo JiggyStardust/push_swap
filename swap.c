@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 12:23:51 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/08 11:29:58 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/09 10:27:35 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	sa(t_stack **stack_a)
 
 void	ss(t_stack **stack_a, t_stack **stack_b)
 {
-	sa(stack_a);
-	sb(stack_b);
+	swap(stack_a);
+	swap(stack_b);
 	ft_printf("ss\n");
 }
