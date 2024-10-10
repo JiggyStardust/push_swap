@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 12:50:25 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/09 15:01:02 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/10 13:31:11 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,8 @@ int		min_in_stack(t_stack **stack)
 	return (min);
 }
 
-int		count_moves(int src_i, int dest_i, int src_size, int dest_size) // dest_size after pb?
+/*
+int		count_moves(int src_i, int dest_i, int src_size, int dest_size) 
 {
 	int		moves;
 	float	ratio_a;
@@ -144,7 +145,7 @@ int		count_moves(int src_i, int dest_i, int src_size, int dest_size) // dest_siz
 
 	moves = 1; // or should I include pb already?
 	ratio_a = (float)src_i/(float)src_size;
-	ratio_b = 1;
+	ratio_b = (float)dest_i/(float)dest_size;
 	while (ratio_a != 0 && src_i != src_size - 1) // how many moves until node is on top of stack_a?
 	{
 		if (ratio_a <= 0.5)
@@ -162,8 +163,7 @@ int		count_moves(int src_i, int dest_i, int src_size, int dest_size) // dest_siz
 	{
 		if (ratio_b <= 0.5 && ratio_a <= 0.5)
 		{
-			moves--;
-			dest_i--;
+			moves = moves - dest_i 
 		}
 		else if (ratio_b > 0.5 && ratio_a >= 0.5)
 		{
@@ -177,12 +177,21 @@ int		count_moves(int src_i, int dest_i, int src_size, int dest_size) // dest_siz
 		}
 	}
 	return (moves);
-}
+}*/
 
 int		find_index_in_stack(int n, t_stack	**stack)
 {
 	t_stack	*temp;
+	int		i;
 
+	temp = *stack;
+	i = 0;
+	while (n != temp->nbr)
+	{
+		temp = temp->next;
+		i++;
+	}
+	return (i);
 }
 
 void	sort_big(t_stack **stack_a, t_stack **stack_b)
