@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 12:50:25 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/17 14:40:07 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/17 16:19:21 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,42 +59,8 @@ void	max_up(t_stack **stack)
 	else if (ratio > 0.5)
 		rrb(stack);
 }
-int		max_in_stack(t_stack **stack)
-{
-	t_stack	*temp;
-	int		max;
-	
-	temp = *stack;
-	max = (*stack)->nbr;
-	while (temp->next != *stack)
-	{
-		if (max < temp->nbr)
-			max = temp->nbr;
-		temp = temp->next;
-	}
-	if (max < temp->nbr)
-		max = temp->nbr;
-	return (max);
-}
 
-int		min_in_stack(t_stack **stack)
-{
-	t_stack	*temp;
-	int		min;
-	
-	temp = *stack;
-	min = (*stack)->nbr;
-	while (temp->next != *stack)
-	{
-		if (min < temp->nbr)
-			min = temp->nbr;
-		temp = temp->next;
-	}
-	if (min < temp->nbr)
-		min = temp->nbr;
-	return (min);
-}
-int		find_index_in_a(int nbr, t_stack	**stack)
+int		find_index_in_a(int nbr, t_stack **stack)
 {
 	t_stack	*temp;
 	int		i;
@@ -109,7 +75,7 @@ int		find_index_in_a(int nbr, t_stack	**stack)
 	return (i);
 }
 
-int		find_index_in_b(int nbr, t_stack	**stack)
+int		find_index_in_b(int nbr, t_stack **stack)
 {
 	t_stack	*temp;
 	int		i;

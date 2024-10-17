@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 13:17:44 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/17 16:08:17 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/17 16:18:48 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ t_stack	*cheapest_node(t_stack **stack_a, t_stack **stack_b)
 
 	current = *stack_a;
 	cheapest = NULL;
-	min_moves = INT_MAX;
+	min_moves = MAX_INT;
 	while (current->next != *stack_a)
 	{
 		moves = calculate_moves(stack_a, stack_b, current->nbr);

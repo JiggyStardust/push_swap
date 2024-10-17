@@ -6,14 +6,14 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 11:14:36 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/17 14:34:57 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/17 16:18:57 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "../Libft/libft.h"
-# define INT_MAX 2147483647
+# define MAX_INT 2147483647
 
 typedef struct s_stack
 {
@@ -41,6 +41,8 @@ int		best_move_int(int src_i, int dest_i, int src_size, int dest_size);
 char	calculate_moves(t_stack **stack_a, t_stack **stack_b, int nbr);
 t_stack	*cheapest_node(t_stack **stack_a, t_stack **stack_b);
 int		find_index_in_stack(int n, t_stack	**stack);
+int		find_index_in_a(int nbr, t_stack **stack);
+int		find_index_in_b(int nbr, t_stack **stack);
 int		find_minimum(t_stack **stack);
 int		find_maximum(t_stack **stack);
 void	max_up(t_stack **stack);
