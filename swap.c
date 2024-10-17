@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 12:23:51 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/09 10:27:35 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/16 12:33:31 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	swap(t_stack **stack)
         *stack = second;
     }
 }
-
 
 void	sb(t_stack **stack_b)
 {

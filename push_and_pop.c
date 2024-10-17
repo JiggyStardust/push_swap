@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 13:39:03 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/08 11:29:13 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/17 10:48:33 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,6 @@ void	free_node(t_stack **stack)
 		}
 	}
 }
-
-// void print_stack_with_addresses(t_stack *stack)
-// {
-//     if (!stack)
-//         return;
-//     t_stack *temp = stack;
-//     do
-//     {
-//         ft_printf("Node value: %d, Address: %p, Next address: %p\n", 
-//                     temp->nbr, (void *)temp, (void *)temp->next);
-//         temp = temp->next;
-//     } while (temp != stack);
-//     ft_printf("(back to start)\n");
-// }
-
 
 void	push(t_stack **dest_stack, t_stack *src_node)
 {

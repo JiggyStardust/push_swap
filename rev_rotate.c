@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 12:25:55 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/08 11:31:34 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/17 13:16:11 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	rrb(t_stack **stack_b)
 
 void	rrr(t_stack **stack_a, t_stack **stack_b)
 {
-	rra(stack_a);
-	rrb(stack_b);
+	rev_rotate(stack_a);
+	rev_rotate(stack_b);
 	ft_printf("rrr\n");
 }

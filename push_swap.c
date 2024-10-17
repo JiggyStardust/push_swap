@@ -6,39 +6,12 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 11:21:28 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/09 11:07:10 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/17 13:49:40 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
-
-// void print_stack(t_stack *stack)
-// {
-//     if (!stack)
-//     {
-//         ft_printf("Stack is empty\n");
-//         return;
-//     }
-//     t_stack *current = stack;
-//     int count = 0;  // Counter to limit printing to 4 elements
-
-//     while (current && count < 13)
-//     {
-//         ft_printf("%d -> ", current->nbr);
-//         current = current->next;
-//         count++;
-
-//         // Check if we have reached the head again to stop
-//         if (current == stack)
-//             break;
-//     }
-
-//     if (count == 4)
-//         ft_printf("...\n");  // Indicate more elements if the list exceeds 4
-//     else
-//         ft_printf("(back to %d)\n", stack->nbr);
-// }
 
 void	add_to_stack(t_stack **stack, int nbr)
 {

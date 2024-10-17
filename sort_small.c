@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 12:27:38 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/08 13:22:44 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/17 11:30:43 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,12 +96,14 @@ int		find_minimum(t_stack **stack)
 	return (node);
 }
 
-void	min_up(t_stack **stack, int size)
+void	min_up(t_stack **stack)
 {
 	int		min_node;
 	float	ratio;
+	int		size;
 	
 	min_node = find_minimum(stack);
+	size = stack_size(*stack);
 //	printf("min_node: %d\n", min_node);
 	ratio = (float)min_node/(float)size;
 //	printf("middle: %f.2\n", middle);
@@ -136,7 +138,7 @@ void	sort_small(t_stack **stack_a, t_stack **stack_b)
 	{
 		while (size > 3 && !already_sorted(*stack_a))
 		{
-			min_up(stack_a, size);
+			min_up(stack_a);
 			pb(stack_a, stack_b);
 //			ft_printf("stack_b: ");
 //			print_stack(*stack_b);
