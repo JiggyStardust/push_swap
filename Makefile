@@ -6,7 +6,7 @@
 #    By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/04 10:46:29 by sniemela          #+#    #+#              #
-#    Updated: 2024/10/07 14:00:36 by sniemela         ###   ########.fr        #
+#    Updated: 2024/10/18 09:54:42 by sniemela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ NAME = push_swap
 CFLAGS = -Wall -Werror -Wextra
 CC = gcc
 
-SOURCES = push_swap.c \
+SOURCES =  count_moves.c \
+			push_swap.c \
 			push_and_pop.c \
 			rev_rotate.c \
 			rotate.c \

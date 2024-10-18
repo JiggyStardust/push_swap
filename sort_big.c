@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 12:50:25 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/17 16:19:21 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/18 15:57:26 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int		find_maximum(t_stack **stack)
 	}
 	return (index);
 }
-
 void	max_up(t_stack **stack)
 {
 	int		max_node;
@@ -50,7 +49,7 @@ void	max_up(t_stack **stack)
 
 //	printf("size: %d\n", size);
 	max_node = find_maximum(stack);
-	size = stack_size(stack);
+	size = stack_size(*stack);
 //	printf("max_node: %d\n", max_node);
 	ratio = (float)max_node/(float)size;
 //	printf("ratio: %f.2\n", ratio);
@@ -60,7 +59,7 @@ void	max_up(t_stack **stack)
 		rrb(stack);
 }
 
-int		find_index_in_a(int nbr, t_stack **stack)
+int		find_index_in_src(int nbr, t_stack **stack)
 {
 	t_stack	*temp;
 	int		i;
@@ -75,18 +74,35 @@ int		find_index_in_a(int nbr, t_stack **stack)
 	return (i);
 }
 
-int		find_index_in_b(int nbr, t_stack **stack)
+int		find_index_in_dest(int n, t_stack **stack)
 {
 	t_stack	*temp;
 	int		i;
 
-	temp = *stack;
 	i = 0;
-	while (nbr < temp->next->nbr)
+	if (n > max_in_stack(stack))
 	{
+		ft_printf("nbr: %d, max in stack: %d\n", n, max_in_stack(stack), stack);
+		ft_printf("index in dest: %d\n", i);
+		return (find_index_in_src(max_in_stack(stack), stack));
+	}
+	if (n < min_in_stack(stack))
+	{
+		ft_printf("nbr: %d, min in stack: %d\n", n, min_in_stack(stack), stack);
+		ft_printf("index in dest: %d\n", i);
+		return (find_index_in_src(min_in_stack(stack), stack));
+	}
+	if (find_minimum(stack) == 0)
+		max_up(stack);
+	temp = *stack;
+	ft_printf("nbr: %d, temp->nbr: %d, temp->next->nbr: %d\n", n, temp->nbr, temp->next->nbr);
+	while (temp->next != *stack && n < temp->nbr && n > temp->next->nbr)
+	{
+		ft_printf("nbr: %d, temp->nbr: %d, temp->next->nbr: %d\n", n, temp->nbr, temp->next->nbr);
 		temp = temp->next;
 		i++;
 	}
+	ft_printf("index in dest: %d\n", i);
 	return (i);
 }
 
@@ -97,19 +113,49 @@ void	sort_big(t_stack **stack_a, t_stack **stack_b)
 	node = NULL;
 	pb(stack_a, stack_b);
 	pb(stack_a, stack_b);
-	if (find_maximum(stack_b) != 0)
-		sb(stack_b);
-	while (stack_size(*stack_a) > 3)
+	// if (find_maximum(stack_b) != 0)
+	// 	sb(stack_b);
+	while (stack_size(*stack_a) > 0)
 	{
 		node = cheapest_node(stack_a, stack_b);
 		execute_moves(stack_a, stack_b, node);
+		ft_printf("\nstack_a: ");
+		print_stack(*stack_a);
+		ft_printf("\nstack_b: ");
+		print_stack(*stack_b);
 		pb(stack_a, stack_b);
+		ft_printf("\nstack_a: ");
+		print_stack(*stack_a);
+		ft_printf("\nstack_b: ");
+		print_stack(*stack_b);
 	}
-	sort_three(stack_a);
+	ft_printf("\nstack_a: ");
+	print_stack(*stack_a);
+	ft_printf("\nstack_b: ");
+	print_stack(*stack_b);
+	//sort_three(stack_a);
+	ft_printf("\nstack_a: ");
+	print_stack(*stack_a);
+	ft_printf("\nstack_b: ");
+	print_stack(*stack_b);
+	ft_printf("index of maximum: %d\n", find_maximum(stack_b));
 	while (find_maximum(stack_b) != 0)
 		max_up(stack_b);
+	ft_printf("\nstack_b: ");
+	print_stack(*stack_b);
 	while (stack_size(*stack_b) > 0)
 		pa(stack_a, stack_b);
-	while (find_minimum(stack_a) != 0)
-		min_up(stack_a);
+	// while (stack_size(*stack_b) > 0)
+	// {
+	// 	node = cheapest_node(stack_b, stack_a);
+	// 	execute_moves(stack_b, stack_a, node);
+	// 	pa(stack_a, stack_b);
+	// 	ft_printf("\nstack_a: ");
+	// 	print_stack(*stack_a);
+	// 	ft_printf("\nstack_b: ");
+	// 	print_stack(*stack_b);
+	// }
+	// while (find_minimum(stack_a) != 0)
+	// 	min_up(stack_a);
 }
+
