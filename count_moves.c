@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 13:17:44 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/18 14:12:04 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:46:56 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,13 +197,13 @@ void 	move_updown(t_stack **a, t_stack **b, t_stack *node, int s_a, int s_b)
 	pos_in_b = find_index_in_dest(node->nbr, b);
 	ratio_a = (float)pos_in_a /(float)s_a;
 	ratio_b = (float)pos_in_b /(float)s_b;
-	while (ratio_a <= 0.5 && find_index_in_src(node->nbr, a) != 0)
+	while (ratio_a <= 0.5 && pos_in_a-- != 0)
 		ra(a);
-	while (ratio_a > 0.5 && find_index_in_src(node->nbr, a) != stack_size(*a) - 1)
+	while (ratio_a > 0.5 && pos_in_a++ < stack_size(*a))
 		rra(a);
-	while (ratio_b <= 0.5 && find_index_in_dest(node->nbr, b) != 0)
+	while (ratio_b <= 0.5 && pos_in_b-- != 0)
 		rb(b);
-	while (ratio_b > 0.5 && find_index_in_dest(node->nbr, b) != stack_size(*b) - 1)
+	while (ratio_b > 0.5 && pos_in_b++ < stack_size(*b))
 	{
 		// ft_printf("move_updown: \n");
 		rrb(b);

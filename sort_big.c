@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 12:50:25 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/18 15:57:26 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:31:26 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,21 +82,21 @@ int		find_index_in_dest(int n, t_stack **stack)
 	i = 0;
 	if (n > max_in_stack(stack))
 	{
+		i = find_index_in_src(max_in_stack(stack), stack);
 		ft_printf("nbr: %d, max in stack: %d\n", n, max_in_stack(stack), stack);
 		ft_printf("index in dest: %d\n", i);
-		return (find_index_in_src(max_in_stack(stack), stack));
+		return (i);
 	}
 	if (n < min_in_stack(stack))
 	{
+		i = find_index_in_src(min_in_stack(stack), stack) + 1;
 		ft_printf("nbr: %d, min in stack: %d\n", n, min_in_stack(stack), stack);
 		ft_printf("index in dest: %d\n", i);
-		return (find_index_in_src(min_in_stack(stack), stack));
+		return (i);
 	}
-	if (find_minimum(stack) == 0)
-		max_up(stack);
+	i = 1;
 	temp = *stack;
-	ft_printf("nbr: %d, temp->nbr: %d, temp->next->nbr: %d\n", n, temp->nbr, temp->next->nbr);
-	while (temp->next != *stack && n < temp->nbr && n > temp->next->nbr)
+	while (temp->next != *stack && !(n < temp->nbr && n > temp->next->nbr))
 	{
 		ft_printf("nbr: %d, temp->nbr: %d, temp->next->nbr: %d\n", n, temp->nbr, temp->next->nbr);
 		temp = temp->next;
