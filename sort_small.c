@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 12:27:38 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/18 14:12:30 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/22 15:53:40 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,16 +79,9 @@ int		find_minimum(t_stack **stack)
 	int		node;
 	
 	temp = *stack;
-	min = (*stack)->nbr;
+	min = min_in_stack(stack);
 	node = 0;
-	while (temp->next != *stack)
-	{
-		if (min > temp->nbr)
-			min = temp->nbr;
-		temp = temp->next;
-	}
-	temp = *stack;
-	while (min != temp->nbr)
+	while (temp->next != *stack && temp->nbr != min)
 	{
 		temp = temp->next;
 		node++;
@@ -117,7 +110,7 @@ void	min_up(t_stack **stack)
 	}
 	else if (ratio > 0.5) // min_node is at the end of the list
 	{
-		while (min_node != size - 1)
+		while (min_node <= size - 1)
 		{
 			rra(stack);
 			min_node++;

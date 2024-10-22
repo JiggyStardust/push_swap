@@ -6,7 +6,7 @@
 #    By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/04 10:46:29 by sniemela          #+#    #+#              #
-#    Updated: 2024/10/18 09:54:42 by sniemela         ###   ########.fr        #
+#    Updated: 2024/10/22 15:00:30 by sniemela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,9 @@ CFLAGS = -Wall -Werror -Wextra
 CC = gcc
 
 SOURCES =  count_moves.c \
+			cheapest_moves.c \
+			moves_a_to_b.c \
+			moves_b_to_a.c \
 			push_swap.c \
 			push_and_pop.c \
 			rev_rotate.c \

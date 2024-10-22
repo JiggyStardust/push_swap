@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 11:21:28 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/18 15:32:55 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/22 16:00:10 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,7 @@ void print_stack(t_stack *stack)
         if (current == stack)
             break;
     }
-
-    if (count == 4)
-        ft_printf("...\n");  // Indicate more elements if the list exceeds 4
-    else
-        ft_printf("(back to %d)\n", stack->nbr);
+	ft_printf("(back to %d)\n", stack->nbr);
 }
 
 int		max_in_stack(t_stack **stack)
@@ -139,7 +135,7 @@ int	main(int ac, char **av)
 		sort_small(&stack_a, &stack_b);
 	else
 		sort_big(&stack_a, &stack_b);
-	 ft_printf("\n\nIn the end: \nstack_a: ");
+	 ft_printf("In the end: \nstack_a: ");
 	 print_stack(stack_a);
 	 ft_printf("stack_b: ");
 	 print_stack(stack_b);
