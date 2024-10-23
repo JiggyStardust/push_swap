@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_small.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: saaraniemela <saaraniemela@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 12:27:38 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/22 15:53:40 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:34:04 by saaraniemel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,38 +24,20 @@ void	sort_three(t_stack **stack_a)
 	c = (*stack_a)->next->next->nbr;
 	if (a > b && b > c) // 3 2 1
 	{	
-//		print_stack(*stack_a);
 		ra(stack_a); // 2 1 3
-//		print_stack(*stack_a);
 		sa(stack_a); //1 2 3
-//		print_stack(*stack_a);
 	}
 	else if (a > c && c > b) // 3 1 2
-	{
-//		print_stack(*stack_a);
 		ra(stack_a); // 1 2 3
-//		print_stack(*stack_a);
-	}
 	else if (a < c && b > c)// 1 3 2 
 	{
-//		print_stack(*stack_a);
 		rra(stack_a); // 2 1 3
-//		print_stack(*stack_a);
 		sa(stack_a); // 1 2 3
-//		print_stack(*stack_a);
 	}
 	else if (a > b && c > a) // 2 1 3
-	{
-//		print_stack(*stack_a);	
 		sa(stack_a);  // 1 2 3
-//		print_stack(*stack_a);
-	}
 	else if (a > c && b > a) // 2 3 1
-	{
-//		print_stack(*stack_a);
 		rra(stack_a); // 1 2 3
-//		print_stack(*stack_a);
-	}
 }
 
 int		already_sorted(t_stack *stack)
@@ -97,10 +79,8 @@ void	min_up(t_stack **stack)
 	
 	min_node = find_minimum(stack);
 	size = stack_size(*stack);
-	// printf("min_node: %d\n", min_node);
 	ratio = (float)min_node/(float)size;
-	// printf("middle: %f.2\n", ratio);
-	if (ratio <= 0.5) // min_node is at the beginning of the list
+	if (ratio <= 0.5)
 	{
 		while (min_node != 0)
 		{
@@ -108,7 +88,7 @@ void	min_up(t_stack **stack)
 			min_node--;
 		}
 	}
-	else if (ratio > 0.5) // min_node is at the end of the list
+	else if (ratio > 0.5)
 	{
 		while (min_node <= size - 1)
 		{
@@ -122,9 +102,7 @@ void	sort_small(t_stack **stack_a, t_stack **stack_b)
 {
 	int	size;
 
-//	ft_printf("sort small\n");
 	size = stack_size(*stack_a);
-//	ft_printf("stack size is: %d\n", size);
 	if (size < 3)
 		sa(stack_a);
 	else if (size > 3)
@@ -133,18 +111,10 @@ void	sort_small(t_stack **stack_a, t_stack **stack_b)
 		{
 			min_up(stack_a);
 			pb(stack_a, stack_b);
-//			ft_printf("stack_b: ");
-//			print_stack(*stack_b);
-//			ft_printf("stack_a: ");
-//			print_stack(*stack_a);
 			size--;
 		}
 	}
 	sort_three(stack_a);
 	while (*stack_b)
-	{
 		pa(stack_a, stack_b);
-//		ft_printf("stack_a: ");
-//		print_stack(*stack_a);
-	}
 }

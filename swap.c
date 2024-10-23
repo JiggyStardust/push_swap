@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: saaraniemela <saaraniemela@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 12:23:51 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/16 12:33:31 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:34:02 by saaraniemel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	swap(t_stack **stack)
 {
     if (*stack && (*stack)->next != *stack)
     {
- //       ft_printf("SWAP HAPPENS\n");
         t_stack *first;
         t_stack *second;
         t_stack *third;

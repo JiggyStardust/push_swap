@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cheapest_moves.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: saaraniemela <saaraniemela@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:49:32 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/22 15:01:44 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:34:44 by saaraniemel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

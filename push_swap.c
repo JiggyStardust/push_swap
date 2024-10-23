@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: saaraniemela <saaraniemela@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 11:21:28 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/23 15:11:12 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:34:20 by saaraniemel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,7 +147,7 @@ static char	**handle_input(char **av, int ac)
 	return (ret);
 }
 
-static int	mod_atoi(char **str)
+static int	mod_atoi(char *str, int *error)
 {
 	long	minus;
 	long	nbr;
@@ -167,10 +167,8 @@ static int	mod_atoi(char **str)
 		nbr = nbr * 10 + (*str - '0');
 		str++;
 	}
-	if (nbr < 0 && minus == 1)
-		return (0);
-	if (nbr < 0)
-		return (-1);
+	if (nbr < 0 || *str != '\0')
+		error = 1;
 	if (minus == 1)
 		nbr = nbr * (-1);
 	return ((int)nbr);
@@ -183,6 +181,7 @@ int	main(int ac, char **av)
 	char	**args;
 	int		i;
 	int		num;
+	int		error;
 
 	if (ac < 2)
 		return (0);
@@ -192,11 +191,13 @@ int	main(int ac, char **av)
 	stack_a	= NULL;
 	stack_b = NULL;
 	i = 0;
+	error = 0;
 	while (args[i] != NULL)
 	{
-		num = ft_atoi(args[i]);
+		num = mod_atoi(args[i++], &error);
+		if (error = 1)
+			free_after_error(&stack_a, args); // implement this function on Thursday 24th
 		add_to_stack(&stack_a, num);
-		i++;
 	}
 	free_2d_arr(args);
 	if (ac <= 5 && !already_sorted(stack_a))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_and_pop.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: saaraniemela <saaraniemela@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 13:39:03 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/17 10:48:33 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/23 18:34:28 by saaraniemel      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,8 @@ void	pb(t_stack **stack_a, t_stack **stack_b)
 {
 	if (*stack_a == NULL)
 		return ; // add error handling later
-	// print_stack_with_addresses(*stack_b);
-	// print_stack_with_addresses(*stack_a);
 	push(stack_b, *stack_a);
 	ft_printf("pb\n");
-	// print_stack_with_addresses(*stack_b);
-	// print_stack_with_addresses(*stack_a);
 	free_node(stack_a);
 }
 
@@ -81,11 +77,7 @@ void	pa(t_stack **stack_a, t_stack **stack_b)
 {
 	if (*stack_b == NULL)
 		return ; // add error handling later
-	// print_stack_with_addresses(*stack_b);
-	// print_stack_with_addresses(*stack_a);
 	push(stack_a, *stack_b);
 	ft_printf("pa\n");
-	// print_stack_with_addresses(*stack_b);
-	// print_stack_with_addresses(*stack_a);
 	free_node(stack_b);
 }
