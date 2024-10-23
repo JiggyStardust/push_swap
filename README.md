@@ -20,5 +20,6 @@ Goal for Thursday 24.10.:
 
 Goal for Friday 25.10.
 - Ready to submission, start evaluation process.
+
 Goal for Sunday 27.10.
 - Three peer-evaluations made
