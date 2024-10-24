@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:19:51 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/24 11:22:00 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:39:09 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	free_node(t_stack **stack)
 {
 	t_stack	*old_head;
-	t_stack *last;
+	t_stack	*last;
 
 	if (*stack)
 	{
@@ -26,13 +26,13 @@ void	free_node(t_stack **stack)
 		}
 		else
 		{
-		old_head = *stack;
-		last = *stack;
-		while (last->next != *stack)
-			last = last->next;
-		*stack = (*stack)->next;
-		last->next = *stack;
-		free(old_head);
+			old_head = *stack;
+			last = *stack;
+			while (last->next != *stack)
+				last = last->next;
+			*stack = (*stack)->next;
+			last->next = *stack;
+			free(old_head);
 		}
 	}
 }
@@ -41,7 +41,7 @@ void	add_to_stack(t_stack **stack, int nbr)
 {
 	t_stack	*new_node;
 	t_stack	*temp;
-	
+
 	new_node = malloc(sizeof(t_stack));
 	if (!new_node)
 		return ;

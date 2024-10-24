@@ -6,7 +6,7 @@
 /*   By: saaraniemela <saaraniemela@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:49:32 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/23 18:34:44 by saaraniemel      ###   ########.fr       */
+/*   Updated: 2024/10/24 15:36:05 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,11 @@ char	best_move_char(int src_i, int dest_i, int s_size, int d_size)
 {
 	int	moves_up;
 	int	moves_down;
-	int mixed_moves;
+	int	mixed_moves;
 
 	moves_up = ft_moves_up(src_i, dest_i);
 	moves_down = ft_moves_down(s_size - src_i, d_size - dest_i);
 	mixed_moves = ft_mix(src_i, dest_i, s_size - src_i, d_size - dest_i);
-	
 	if (moves_down < moves_up && moves_down < mixed_moves)
 		return ('d');
 	else if (moves_up < moves_down && moves_up < mixed_moves)

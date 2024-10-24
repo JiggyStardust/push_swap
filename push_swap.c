@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 11:21:28 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/24 12:25:55 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/24 16:50:41 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int	main(int ac, char **av)
 
 	if (ac < 2)
 		return (0);
-	stack_a = NULL;
 	stack_b = NULL;
 	error = 0;
 	args = handle_input(av, ac);

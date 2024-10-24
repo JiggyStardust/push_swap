@@ -6,13 +6,13 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:37:56 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/24 11:40:56 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:36:52 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		already_sorted(t_stack *stack)
+int	already_sorted(t_stack *stack)
 {
 	t_stack	*node;
 

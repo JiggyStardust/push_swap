@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:33:52 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/24 12:27:36 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:28:48 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,11 @@ int	find_index_in_src(int nbr, t_stack **stack)
 	return (i);
 }
 
-int	find_index_in_a(int n, t_stack **stack)
+int	find_index_in_a(int n, t_stack **stack, int max_i, int min_i)
 {
 	t_stack	*temp;
 	int		i;
-	int		min_i;
-	int		max_i;
 
-	i = 0;
-	max_i = find_index_in_src(max_in_stack(stack), stack);
-	min_i = find_index_in_src(min_in_stack(stack), stack);
 	if (n > max_in_stack(stack))
 	{
 		if (min_i < max_i + 1)
@@ -52,26 +47,19 @@ int	find_index_in_a(int n, t_stack **stack)
 	}
 	i = 1;
 	temp = *stack;
-	while (temp->next != *stack)
+	while (temp->next != *stack && !(n > temp->nbr && n < temp->next->nbr))
 	{
-		if (n > temp->nbr && n < temp->next->nbr)
-			break ;
 		temp = temp->next;
 		i++;
 	}
 	return (i);
 }
 
-int	find_index_in_b(int n, t_stack **stack)
+int	find_index_in_b(int n, t_stack **stack, int max_i, int min_i)
 {
 	t_stack	*temp;
 	int		i;
-	int		min_i;
-	int		max_i;
 
-	i = 0;
-	max_i = find_index_in_src(max_in_stack(stack), stack);
-	min_i = find_index_in_src(min_in_stack(stack), stack);
 	if (n > max_in_stack(stack))
 	{
 		i = max_i;
@@ -98,10 +86,14 @@ int	find_index_in_b(int n, t_stack **stack)
 int	find_index_in_dest(int n, t_stack **stack, char stack_f)
 {
 	int	i;
+	int	max_i;
+	int	min_i;
 
+	max_i = find_index_in_src(max_in_stack(stack), stack);
+	min_i = find_index_in_src(min_in_stack(stack), stack);
 	if (stack_f == 'b')
-		i = find_index_in_b(n, stack);
+		i = find_index_in_b(n, stack, max_i, min_i);
 	else
-		i = find_index_in_a(n, stack);
+		i = find_index_in_a(n, stack, max_i, min_i);
 	return (i);
 }

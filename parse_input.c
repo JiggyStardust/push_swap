@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:26:04 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/24 11:41:41 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:09:25 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,12 @@ static int	get_length(char **av, int ac)
 	return (len);
 }
 
-char	**handle_input(char **av, int ac)
+char	*args_to_str(char **av, int ac)
 {
 	char	*arg;
-	char	**ret;
 	int		i;
 	int		j;
-	int 	k;
+	int		k;
 
 	arg = (char *)malloc(get_length(av, ac) * sizeof(char));
 	if (!arg)
@@ -50,8 +49,26 @@ char	**handle_input(char **av, int ac)
 		i++;
 	}
 	arg[k] = '\0';
+	return (arg);
+}
+
+char	**handle_input(char **av, int ac)
+{
+	char	*arg;
+	char	**ret;
+	int		error;
+
+	arg = args_to_str(av, ac);
+	if (!arg)
+		return (NULL);
+	error = check_args_validity(arg);
+	if (error == -1 && arg)
+	{
+		free(arg);
+		ft_printf("Error\n");
+		return (NULL);
+	}
 	ret = ft_split(arg, ' ');
 	free(arg);
 	return (ret);
 }
-
