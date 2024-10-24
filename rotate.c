@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaraniemela <saaraniemela@student.42.f    +#+  +:+       +#+        */
+/*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 12:25:05 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/23 18:34:09 by saaraniemel      ###   ########.fr       */
+/*   Updated: 2024/10/24 12:13:08 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ra(t_stack **stack_a)
 	rotate(stack_a);
 	ft_printf("ra\n");
 }
+
 void	rb(t_stack **stack_b)
 {
 	rotate(stack_b);

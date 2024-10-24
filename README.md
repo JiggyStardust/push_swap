@@ -18,6 +18,9 @@ Added parsing in case input contains strings (single or multiple) or unwanted ch
 Goal for Thursday 24.10.:
 - Finish error handling, modify main() into sub-functions and polish overall appearance.
 
+
+QUESTION: Do I need more error handling? Does it need to be implemented in push() for example?
+
 Goal for Friday 25.10.
 - Ready to submission, start evaluation process.
 

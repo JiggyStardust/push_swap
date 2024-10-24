@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saaraniemela <saaraniemela@student.42.f    +#+  +:+       +#+        */
+/*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 12:23:51 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/23 18:34:02 by saaraniemel      ###   ########.fr       */
+/*   Updated: 2024/10/24 12:12:45 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 void	swap(t_stack **stack)
 {
-    if (*stack && (*stack)->next != *stack)
-    {
-        t_stack *first;
-        t_stack *second;
-        t_stack *third;
+	t_stack	*first;
+	t_stack	*second;
+	t_stack	*third;
 
-        first = *stack;
-        second = first->next;
-        first->next = second->next;
-        second->next = first;
-        third = *stack;
+	if (*stack && (*stack)->next != *stack)
+	{
+		first = *stack;
+		second = first->next;
+		first->next = second->next;
+		second->next = first;
+		third = *stack;
 		while (third->next != *stack)
-        	third = third->next;
+			third = third->next;
 		third->next = second;
-        *stack = second;
-    }
+		*stack = second;
+	}
 }
 
 void	sb(t_stack **stack_b)

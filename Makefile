@@ -6,7 +6,7 @@
 #    By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/04 10:46:29 by sniemela          #+#    #+#              #
-#    Updated: 2024/10/22 15:00:30 by sniemela         ###   ########.fr        #
+#    Updated: 2024/10/24 12:17:04 by sniemela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,14 +17,18 @@ CC = gcc
 
 SOURCES =  count_moves.c \
 			cheapest_moves.c \
+			find_index.c \
+			maximum.c \
+			minimum.c \
+			memory_handling.c \
 			moves_a_to_b.c \
 			moves_b_to_a.c \
+			parse_input.c \
 			push_swap.c \
 			push_and_pop.c \
 			rev_rotate.c \
 			rotate.c \
-			sort_big.c \
-			sort_small.c \
+			sorting.c \
 			swap.c
 		
 OBJS = $(SOURCES:.c=.o)

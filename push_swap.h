@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 11:14:36 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/22 15:04:36 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/24 12:16:23 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,15 @@ typedef struct s_stack
 
 void	print_stack(t_stack *stack);
 
-// handling, allocating and deallocating stacks
+// Memory allocation, stack initialisation and freeing
 
 void	add_to_stack(t_stack **stack, int nbr);
+void	free_after_error(t_stack **a, t_stack **b, char **str);
 void	free_node(t_stack **stack);
+void	free_2d_arr(char **array);
+t_stack	*init_stack_a(char **args, int error);
+char	**handle_input(char **av, int ac);
+
 int		stack_size(t_stack *lst);
 
 //	calculating and inspecting stacks and moves

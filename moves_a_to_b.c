@@ -6,23 +6,23 @@
 /*   By: saaraniemela <saaraniemela@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:19:13 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/23 18:34:36 by saaraniemel      ###   ########.fr       */
+/*   Updated: 2024/10/24 12:29:35 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void 	a_to_b_updown(t_stack **a, t_stack **b, int pos_in_a, int pos_in_b)
+void	a_to_b_updown(t_stack **a, t_stack **b, int pos_in_a, int pos_in_b)
 {
-	int	size_a;
-	int	size_b;
+	int		size_a;
+	int		size_b;
 	float	ratio_src;
 	float	ratio_dest;
 
 	size_a = stack_size(*a);
 	size_b = stack_size(*b);
-	ratio_src = (float)pos_in_a /(float)size_a;
-	ratio_dest = (float)pos_in_b /(float)size_b;
+	ratio_src = (float)pos_in_a / (float)size_a;
+	ratio_dest = (float)pos_in_b / (float)size_b;
 	while (ratio_src <= 0.5 && pos_in_a-- != 0)
 		ra(a);
 	while (ratio_src > 0.5 && pos_in_a++ < size_a)
@@ -81,7 +81,7 @@ void	a_to_b_down(t_stack **a, t_stack **b, int pos_in_a, int pos_in_b)
 void	a_to_b_moves(t_stack **src, t_stack **dest, t_stack *node, char s_flag)
 {
 	int	src_i;
-	int dest_i;
+	int	dest_i;
 	int	size_src;
 	int	size_dest;
 
@@ -89,7 +89,6 @@ void	a_to_b_moves(t_stack **src, t_stack **dest, t_stack *node, char s_flag)
 	dest_i = find_index_in_dest(node->nbr, dest, s_flag);
 	size_src = stack_size(*src);
 	size_dest = stack_size(*dest);
-
 	if (best_move_char(src_i, dest_i, size_src, size_dest) == 'u')
 		a_to_b_up(src, dest, src_i, dest_i);
 	else if (best_move_char(src_i, dest_i, size_src, size_dest) == 'd')

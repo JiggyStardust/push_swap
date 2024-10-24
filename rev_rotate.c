@@ -6,7 +6,7 @@
 /*   By: saaraniemela <saaraniemela@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/06 12:25:55 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/23 18:34:11 by saaraniemel      ###   ########.fr       */
+/*   Updated: 2024/10/24 12:14:31 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 void	rev_rotate(t_stack **stack)
 {
+	t_stack	*last;
+	t_stack	*before_last;
+
 	if (!*stack || (*stack)->next == *stack)
 		return ;
-	t_stack	*last = *stack;
-	t_stack	*before_last = NULL;
-
+	last = *stack;
+	before_last = NULL;
 	while (last->next != *stack)
 	{
 		before_last = last;

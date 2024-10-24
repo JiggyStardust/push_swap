@@ -6,13 +6,13 @@
 /*   By: saaraniemela <saaraniemela@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:19:07 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/23 18:34:31 by saaraniemel      ###   ########.fr       */
+/*   Updated: 2024/10/24 12:32:35 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void 	b_to_a_updown(t_stack **b, t_stack **a, int pos_in_b, int pos_in_a)
+void	b_to_a_updown(t_stack **b, t_stack **a, int pos_in_b, int pos_in_a)
 {
 	int		size_a;
 	int		size_b;
@@ -21,8 +21,8 @@ void 	b_to_a_updown(t_stack **b, t_stack **a, int pos_in_b, int pos_in_a)
 
 	size_a = stack_size(*a);
 	size_b = stack_size(*b);
-	ratio_src = (float)pos_in_a /(float)size_a;
-	ratio_dest = (float)pos_in_b /(float)size_b;
+	ratio_src = (float)pos_in_a / (float)size_a;
+	ratio_dest = (float)pos_in_b / (float)size_b;
 	while (ratio_src <= 0.5 && pos_in_a-- != 0)
 		ra(a);
 	while (ratio_src > 0.5 && pos_in_a++ < size_a)
@@ -81,7 +81,7 @@ void	b_to_a_down(t_stack **b, t_stack **a, int pos_in_b, int pos_in_a)
 void	b_to_a_moves(t_stack **src, t_stack **dest, t_stack *node, char s_flag)
 {
 	int	src_i;
-	int dest_i;
+	int	dest_i;
 	int	size_src;
 	int	size_dest;
 
@@ -89,7 +89,6 @@ void	b_to_a_moves(t_stack **src, t_stack **dest, t_stack *node, char s_flag)
 	dest_i = find_index_in_dest(node->nbr, dest, s_flag);
 	size_src = stack_size(*src);
 	size_dest = stack_size(*dest);
-
 	if (best_move_char(src_i, dest_i, size_src, size_dest) == 'u')
 		b_to_a_up(src, dest, src_i, dest_i);
 	else if (best_move_char(src_i, dest_i, size_src, size_dest) == 'd')
