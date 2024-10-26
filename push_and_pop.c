@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 13:39:03 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/24 16:47:39 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/26 12:54:35 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	pb(t_stack **stack_a, t_stack **stack_b)
 		return ;
 	if (push(stack_b, *stack_a) == -1)
 	{
-		free_after_error(stack_a, stack_b, NULL);
+		free_after_error(*stack_a, *stack_b, NULL);
 		exit(EXIT_FAILURE);
 	}	
 	ft_printf("pb\n");
@@ -59,7 +59,7 @@ void	pa(t_stack **stack_a, t_stack **stack_b)
 		return ;
 	if (push(stack_a, *stack_b) == -1)
 	{
-		free_after_error(stack_a, stack_b, NULL);
+		free_after_error(*stack_a, *stack_b, NULL);
 		exit(EXIT_FAILURE);
 	}
 	ft_printf("pa\n");

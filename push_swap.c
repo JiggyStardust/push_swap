@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 11:21:28 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/24 16:50:41 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/26 14:07:09 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,31 @@ static int	mod_atoi(char *str, int *error)
 		nbr = nbr * 10 + (*str - '0');
 		str++;
 	}
-	if (nbr < 0 || *str != '\0')
+	if (nbr > 2147483648 || (nbr == 21474483648 && minus != 1) || *str != '\0')
 		*error = 1;
 	if (*error == 1)
 		return (0);
 	if (minus == 1)
 		nbr = nbr * (-1);
 	return ((int)nbr);
+}
+
+static int	check_dup(t_stack *stack, int n)
+{
+	t_stack	*temp;
+
+	if (stack_size(stack) < 1)
+		return (0);
+	if (stack->nbr == n)
+		return (1);
+	temp = stack;
+	while (temp->next != stack)
+	{
+		if (temp->nbr == n)
+			return (1);
+		temp = temp->next;
+	}
+	return (0);
 }
 
 t_stack	*init_stack_a(char **args, int error)
@@ -70,12 +88,10 @@ t_stack	*init_stack_a(char **args, int error)
 	while (args[i] != NULL)
 	{
 		num = mod_atoi(args[i++], &error);
-		if (error == 1)
-		{
-			free_after_error(&stack_a, NULL, args);
-			return (NULL);
-		}
-		add_to_stack(&stack_a, num);
+		if (error == 1 || check_dup(stack_a, num) == 1)
+			free_after_error(stack_a, NULL, args);
+		if (add_to_stack(&stack_a, num) == -1)
+			free_after_error(stack_a, NULL, args);
 	}
 	return (stack_a);
 }
@@ -96,9 +112,9 @@ int	main(int ac, char **av)
 		return (1);
 	stack_a = init_stack_a(args, error);
 	if (!stack_a)
-		return (1);
+		free_after_error(stack_a, stack_b, args);
 	free_2d_arr(args);
-	if (ac <= 5 && !already_sorted(stack_a))
+	if (ac <= 6 && !already_sorted(stack_a))
 		sort_small(&stack_a, &stack_b);
 	else if (!already_sorted(stack_a))
 		sort_big(&stack_a, &stack_b);

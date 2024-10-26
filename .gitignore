@@ -6,3 +6,7 @@ old_functions
 testin
 
 push_swap
+
+push_swap_test_linux.sh
+
+checker_linux

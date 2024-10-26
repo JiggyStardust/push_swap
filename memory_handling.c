@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:19:51 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/24 15:39:09 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/26 13:59:13 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ void	free_node(t_stack **stack)
 	}
 }
 
-void	add_to_stack(t_stack **stack, int nbr)
+int	add_to_stack(t_stack **stack, int nbr)
 {
 	t_stack	*new_node;
 	t_stack	*temp;
 
 	new_node = malloc(sizeof(t_stack));
 	if (!new_node)
-		return ;
+		return (-1);
 	new_node->nbr = nbr;
 	if (*stack == NULL)
 	{
@@ -59,6 +59,7 @@ void	add_to_stack(t_stack **stack, int nbr)
 		temp->next = new_node;
 		new_node->next = *stack;
 	}
+	return (0);
 }
 
 void	free_2d_arr(char **array)
@@ -77,13 +78,14 @@ void	free_2d_arr(char **array)
 	array = NULL;
 }
 
-void	free_after_error(t_stack **a, t_stack **b, char **str)
+void	free_after_error(t_stack *a, t_stack *b, char **str)
 {
 	while (a)
-		free_node(a);
+		free_node(&a);
 	while (b)
-		free_node(b);
-	if (str && *str)
+		free_node(&b);
+	if (str || *str)
 		free_2d_arr(str);
 	ft_printf("Error\n");
+	exit(EXIT_FAILURE);
 }

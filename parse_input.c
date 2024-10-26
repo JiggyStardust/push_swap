@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:26:04 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/24 17:09:25 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/26 13:12:51 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,23 @@ char	*args_to_str(char **av, int ac)
 	return (arg);
 }
 
+static int	check_args_validity(char *arg)
+{
+	int	i;
+
+	i = 0;
+	while (arg[i] != '\0')
+	{
+		if ((arg[i] < '0' || arg[i] > '9') && arg[i] != '+' && arg[i] != '-'
+			&& (arg[i] < 9 || arg[i] > 13) && arg[i] != 32)
+		{
+			return (-1);
+		}
+		i++;
+	}
+	return (1);
+}
+
 char	**handle_input(char **av, int ac)
 {
 	char	*arg;
@@ -62,7 +79,7 @@ char	**handle_input(char **av, int ac)
 	if (!arg)
 		return (NULL);
 	error = check_args_validity(arg);
-	if (error == -1 && arg)
+	if ((error == -1 && arg) || *arg == '\0')
 	{
 		free(arg);
 		ft_printf("Error\n");

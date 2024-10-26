@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 11:14:36 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/24 16:46:56 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/26 14:09:31 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 # include "../Libft/libft.h"
 # define MAX_INT 2147483647
+# define MIN_INT -2147483648
 
 typedef struct s_stack
 {
@@ -21,22 +22,26 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-// Memory allocation, stack initialisation and freeing
+// Parsing and checkin' input validity
 
-void	add_to_stack(t_stack **stack, int nbr);
-void	free_after_error(t_stack **a, t_stack **b, char **str);
-void	free_node(t_stack **stack);
-void	free_2d_arr(char **array);
-t_stack	*init_stack_a(char **args, int error);
+char	*args_to_str(char **av, int ac);
 char	**handle_input(char **av, int ac);
 
-//	Stack size and finding index in stack
+// Memory allocation, stack initialisation and freeing
+
+int		add_to_stack(t_stack **stack, int nbr);
+void	free_after_error(t_stack *a, t_stack *b, char **str);
+void	free_node(t_stack **stack);
+void	free_2d_arr(char **array);
+char	**handle_input(char **av, int ac);
+int		stack_size(t_stack *lst);
+
+//	Finding index in stack
 
 int		find_index_in_dest(int n, t_stack **stack, char stack_f);
 int		find_index_in_src(int nbr, t_stack **stack);
 int		find_index_in_a(int n, t_stack **stack, int max_i, int min_i);
 int		find_index_in_b(int n, t_stack **stack, int max_i, int min_i);
-int		stack_size(t_stack *lst);
 
 // Defining stack maximum and minimum
 
