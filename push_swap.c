@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 11:21:28 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/26 14:07:09 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/29 08:53:05 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int	check_dup(t_stack *stack, int n)
 {
 	t_stack	*temp;
 
-	if (stack_size(stack) < 1)
+	if (stack == NULL)
 		return (0);
 	if (stack->nbr == n)
 		return (1);
@@ -73,6 +73,8 @@ static int	check_dup(t_stack *stack, int n)
 			return (1);
 		temp = temp->next;
 	}
+	if (temp->nbr == n)
+		return (1);
 	return (0);
 }
 
@@ -87,11 +89,12 @@ t_stack	*init_stack_a(char **args, int error)
 	stack_a = NULL;
 	while (args[i] != NULL)
 	{
-		num = mod_atoi(args[i++], &error);
+		num = mod_atoi(args[i], &error);
 		if (error == 1 || check_dup(stack_a, num) == 1)
 			free_after_error(stack_a, NULL, args);
 		if (add_to_stack(&stack_a, num) == -1)
 			free_after_error(stack_a, NULL, args);
+		i++;
 	}
 	return (stack_a);
 }
