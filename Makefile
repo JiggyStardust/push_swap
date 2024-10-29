@@ -6,7 +6,7 @@
 #    By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/04 10:46:29 by sniemela          #+#    #+#              #
-#    Updated: 2024/10/24 12:17:04 by sniemela         ###   ########.fr        #
+#    Updated: 2024/10/29 10:34:26 by sniemela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SOURCES =  count_moves.c \
 		
 OBJS = $(SOURCES:.c=.o)
 
-LIBFT_DIR = ../Libft
+LIBFT_DIR = Libft
 LIBFT = $(LIBFT_DIR)/libft.a 
 
 INCLUDES = -I$(LIBFT_DIR)
@@ -61,7 +61,7 @@ $(LIBFT):
 clean:
 	rm -f $(OBJS)
 	make -C $(LIBFT_DIR) clean
-	@echo "$(CYAN_BOLD)Cleaned up object files from pipex and libft.$(ANSI_RESET)"
+	@echo "$(CYAN_BOLD)Cleaned up object files from push_swap and libft.$(ANSI_RESET)"
 
 fclean: clean
 	rm -f $(NAME)
