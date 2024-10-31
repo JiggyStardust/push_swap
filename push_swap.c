@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 11:21:28 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/29 08:53:05 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/10/31 14:13:18 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int	main(int ac, char **av)
 	if (!stack_a)
 		free_after_error(stack_a, stack_b, args);
 	free_2d_arr(args);
-	if (ac <= 6 && !already_sorted(stack_a))
+	if (stack_size(stack_a) <= 5 && !already_sorted(stack_a))
 		sort_small(&stack_a, &stack_b);
 	else if (!already_sorted(stack_a))
 		sort_big(&stack_a, &stack_b);
