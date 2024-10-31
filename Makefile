@@ -6,7 +6,7 @@
 #    By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/04 10:46:29 by sniemela          #+#    #+#              #
-#    Updated: 2024/10/29 10:34:26 by sniemela         ###   ########.fr        #
+#    Updated: 2024/10/31 10:14:46 by sniemela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,14 +59,20 @@ $(LIBFT):
 	make -C $(LIBFT_DIR)
 
 clean:
-	rm -f $(OBJS)
-	make -C $(LIBFT_DIR) clean
-	@echo "$(CYAN_BOLD)Cleaned up object files from push_swap and libft.$(ANSI_RESET)"
+	@if [ -n "$(shell find . -name '*.o' 2>/dev/null)" ]; then \
+		rm -f $(OBJS); \
+		echo "$(CYAN_BOLD)Cleaned up object files from $(NAME).$(ANSI_RESET)"; \
+	fi
+	@if [ -n "$(shell find Libft -name '*.o' 2>/dev/null)" ]; then \
+		make -C $(LIBFT_DIR) clean; \
+	fi
 
 fclean: clean
-	rm -f $(NAME)
-	make -C $(LIBFT_DIR) fclean
-	@echo "$(CYAN_BOLD)Removed $(NAME) and libft.a$(ANSI_RESET)"
+	@if [ -f $(NAME) ]; then \
+		rm -f $(NAME); \
+		echo "$(CYAN_BOLD)Removed $(NAME) and $(NAME) leftover object files.$(ANSI_RESET)"; \
+		make -C $(LIBFT_DIR) fclean; \
+	fi
 
 re: fclean all
 	@echo "$(GREEN_UNDER)Rebuilt everything from scratch$(ANSI_RESET)"
