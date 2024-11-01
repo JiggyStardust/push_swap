@@ -6,15 +6,13 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 11:14:36 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/29 08:43:04 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/11/01 13:55:48 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "Libft/libft.h"
-# define MAX_INT 2147483647
-# define MIN_INT -2147483648
 
 typedef struct s_stack
 {

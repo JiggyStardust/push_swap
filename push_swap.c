@@ -6,7 +6,7 @@
 /*   By: sniemela <sniemela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 11:21:28 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/31 14:13:18 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/11/01 13:55:04 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	mod_atoi(char *str, int *error)
 		nbr = nbr * 10 + (*str - '0');
 		str++;
 	}
-	if (nbr > 2147483648 || (nbr == 21474483648 && minus != 1) || *str != '\0')
+	if (nbr > 2147483648 || (nbr == 2147483648 && minus != 1) || *str != '\0')
 		*error = 1;
 	if (*error == 1)
 		return (0);

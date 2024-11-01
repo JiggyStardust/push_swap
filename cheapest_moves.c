@@ -6,7 +6,7 @@
 /*   By: saaraniemela <saaraniemela@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:49:32 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/24 15:36:05 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/11/01 13:56:26 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_stack	*cheapest_node(t_stack **src, t_stack **dest, char STACK_F)
 
 	current = *src;
 	cheapest = NULL;
-	min_moves = MAX_INT;
+	min_moves = INT_MAX;
 	if (current->next == *src)
 		return (current);
 	while (current->next != *src)

@@ -6,7 +6,7 @@
 /*   By: saaraniemela <saaraniemela@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 14:19:13 by sniemela          #+#    #+#             */
-/*   Updated: 2024/10/24 12:29:35 by sniemela         ###   ########.fr       */
+/*   Updated: 2024/11/01 13:58:59 by sniemela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,16 @@ void	a_to_b_moves(t_stack **src, t_stack **dest, t_stack *node, char s_flag)
 	int	dest_i;
 	int	size_src;
 	int	size_dest;
+	char	best_move;
 
 	src_i = find_index_in_src(node->nbr, src);
 	dest_i = find_index_in_dest(node->nbr, dest, s_flag);
 	size_src = stack_size(*src);
 	size_dest = stack_size(*dest);
-	if (best_move_char(src_i, dest_i, size_src, size_dest) == 'u')
+	best_move = best_move_char(src_i, dest_i, size_src, size_dest);
+	if (best_move == 'u')
 		a_to_b_up(src, dest, src_i, dest_i);
-	else if (best_move_char(src_i, dest_i, size_src, size_dest) == 'd')
+	else if (best_move == 'd')
 		a_to_b_down(src, dest, src_i, dest_i);
 	else
 		a_to_b_updown(src, dest, src_i, dest_i);
